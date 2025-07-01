@@ -3,6 +3,7 @@
 ## Технологии
 
 - React + TypeScript
+- Axios
 - SCSS
 
 ## Запуск
