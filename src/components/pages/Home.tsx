@@ -9,7 +9,7 @@ const HomePage = () => {
     const [books, setBooks] = useState<BookItem[]>([])
 
     useEffect(() => {
-        Books.getBooksByKeyword(keywords)
+        Books.getBooksByQuery(keywords)
             .then((res) => {
                 setBooks(res.data.items)
             })

@@ -5,7 +5,7 @@ const useBooks = (keyword: string) => {
     const [books, setBooks] = useState([])
 
     useEffect(() => {
-        Books.getBooksByKeyword(keyword)
+        Books.getBooksByQuery(keyword)
             .then((response) => {
                 setBooks(response.data.items || [])
             })
