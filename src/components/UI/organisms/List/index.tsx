@@ -4,12 +4,13 @@ import Card from '../../molecules/Card'
 import './index.scss'
 
 type ListProps = {
+    className: string
     items: BookItem[]
 }
 
-const List: FC<ListProps> = ({ items }) => {
+const List: FC<ListProps> = ({ className, items }) => {
     return (
-        <ul className='list'>
+        <ul className={`list ${className}`}>
             {items.map((item) => (
                 <li className='item' key={item.id}>
                     <Card

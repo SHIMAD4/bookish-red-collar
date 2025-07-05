@@ -10,7 +10,8 @@ type HomeTemplate = {
 const HomeTemplate: FC<HomeTemplate> = ({ books }) => {
     return (
         <div className='wrapper'>
-            <List items={books} />
+            <div className='sidebar'></div>
+            <List className='mainList' items={books} />
         </div>
     )
 }
