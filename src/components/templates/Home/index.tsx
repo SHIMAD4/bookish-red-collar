@@ -11,7 +11,7 @@ type HomeTemplate = {
 const HomeTemplate: FC<HomeTemplate> = ({ books }) => {
     return (
         <div className='wrapper'>
-            <Sidebar />
+            <Sidebar tools={['search', 'filter']} />
             <List className='mainList' items={books} />
         </div>
     )

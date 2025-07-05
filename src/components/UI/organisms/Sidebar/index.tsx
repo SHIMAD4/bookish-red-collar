@@ -1,21 +1,16 @@
+import type { ToolName } from '@/shared/types'
 import type { FC } from 'react'
+import Tools from '../../molecules/Tools'
 import './index.scss'
 
-// type SidebarProps = {}
+type SidebarProps = {
+    tools: ToolName[]
+}
 
-const Sidebar: FC = () => {
+const Sidebar: FC<SidebarProps> = ({ tools }) => {
     return (
         <div className='sidebar'>
-            <input className='searchInput' type='text' placeholder='Поиск' />
-            <form className='filterForm'>
-                <select className='filterSelect' name='filter' id='filter'>
-                    <option value='ebooks'>Все книги</option>
-                    <option value='free-ebooks'>Бесплатные</option>
-                    <option value='full'>Открытые</option>
-                    <option value='paid-ebooks'>Платные</option>
-                    <option value='partial'>Превью</option>
-                </select>
-            </form>
+            <Tools whichTools={tools} />
         </div>
     )
 }
