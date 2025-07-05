@@ -1,3 +1,4 @@
+import Sidebar from '@/components/UI/organisms/Sidebar'
 import type { BookItem } from '@/shared/types'
 import type { FC } from 'react'
 import List from '../../UI/organisms/List'
@@ -10,7 +11,7 @@ type HomeTemplate = {
 const HomeTemplate: FC<HomeTemplate> = ({ books }) => {
     return (
         <div className='wrapper'>
-            <div className='sidebar'></div>
+            <Sidebar />
             <List className='mainList' items={books} />
         </div>
     )
