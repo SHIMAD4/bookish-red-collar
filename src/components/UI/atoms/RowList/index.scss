@@ -1,0 +1,15 @@
+@import '@/assets/scss/mixins';
+
+.rowList {
+    @include flex(row, flex-start, flex-start, 8px);
+    flex-wrap: wrap;
+
+    list-style-type: none;
+
+    li {
+        background-color: black;
+        color: white;
+        padding: 6px;
+        border-radius: 8px;
+    }
+}

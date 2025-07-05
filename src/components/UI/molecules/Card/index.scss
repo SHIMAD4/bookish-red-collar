@@ -1,0 +1,24 @@
+@import '@/assets/scss/mixins';
+
+$card-background-color: #d1d1d1;
+
+.card {
+    @include flex(row, flex-start);
+
+    max-width: 560px;
+    min-width: 560px;
+    min-height: 225px;
+
+    padding: 16px;
+
+    background-color: $card-background-color;
+    border-radius: 16px;
+
+    .info {
+        @include flex(column, center, flex-start);
+
+        .description {
+            @include cutTextRows;
+        }
+    }
+}
