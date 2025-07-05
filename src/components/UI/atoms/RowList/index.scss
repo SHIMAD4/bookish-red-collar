@@ -1,4 +1,4 @@
-@import '@/assets/scss/mixins';
+@use '@/assets/scss/mixins' as *;
 
 .rowList {
     @include flex(row, flex-start, flex-start, 8px);
