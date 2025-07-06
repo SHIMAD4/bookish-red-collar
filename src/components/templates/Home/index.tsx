@@ -1,16 +1,19 @@
-import type { BookItem } from '@/shared/types'
+import Sidebar from '@/components/UI/organisms/Sidebar'
+import type { BookItem, ToolName } from '@/shared/types'
 import type { FC } from 'react'
 import List from '../../UI/organisms/List'
 import './index.scss'
 
 type HomeTemplate = {
     books: BookItem[]
+    tools: ToolName[]
 }
 
-const HomeTemplate: FC<HomeTemplate> = ({ books }) => {
+const HomeTemplate: FC<HomeTemplate> = ({ books, tools }) => {
     return (
         <div className='wrapper'>
-            <List items={books} />
+            <Sidebar tools={tools} />
+            <List className='mainList' items={books} />
         </div>
     )
 }

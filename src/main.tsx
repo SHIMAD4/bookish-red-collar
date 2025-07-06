@@ -1,10 +1,10 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
+import HomePage from './components/pages/Home'
+import { QueryProvider } from './context/query/context'
 import './index.scss'
 
 createRoot(document.getElementById('root')!).render(
-    <StrictMode>
-        <App />
-    </StrictMode>,
+    <QueryProvider>
+        <HomePage />
+    </QueryProvider>,
 )

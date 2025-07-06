@@ -1,7 +1,12 @@
 .wrapper {
-    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    gap: 16px;
 
-    margin: 0 auto;
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin-right: 24px;
+
+    .mainList {
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
 }

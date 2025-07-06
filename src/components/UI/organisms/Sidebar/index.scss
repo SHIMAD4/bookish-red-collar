@@ -1,0 +1,11 @@
+@use '@/assets/scss/mixins' as *;
+
+$sidebar-bg: rgb(153, 153, 153);
+
+.sidebar {
+    @include flex(column, flex-start, flex-start, 16px);
+
+    padding: 16px;
+
+    background-color: $sidebar-bg;
+}

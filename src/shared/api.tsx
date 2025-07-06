@@ -5,7 +5,13 @@ const ApiInstance = axios.create({
 })
 
 const Books = {
-    getBooksByKeyword: (keyword: string) => ApiInstance.get(`?q=${keyword}`),
+    getBooksByQuery: (keywords: string, filter?: string) => {
+        if (keywords && filter) {
+            return ApiInstance.get(`?filter=${filter}&q=${keywords}`)
+        }
+
+        return ApiInstance.get(`?q=${keywords}`)
+    },
 }
 
 export { Books }
