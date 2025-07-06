@@ -1,4 +1,4 @@
-import { useFilter } from '@/context/filter/useFilter'
+import { useQuery } from '@/context/query/useQuery'
 import type { ChangeEvent, FC } from 'react'
 import './index.scss'
 
@@ -7,7 +7,7 @@ type FilterSelectProps = {
 }
 
 const FilterSelect: FC<FilterSelectProps> = ({ className }) => {
-    const [filter, setFilter] = useFilter()
+    const { filter, setFilter } = useQuery()
 
     const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
         setFilter(e.target.value)

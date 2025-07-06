@@ -1,4 +1,4 @@
-import { useKeywords } from '@/context/keywords/useKeywords'
+import { useQuery } from '@/context/query/useQuery'
 import { useDebouncedCallback } from '@/hooks/useDebounce'
 import type { ChangeEvent, FC } from 'react'
 import './index.scss'
@@ -8,7 +8,7 @@ type Props = {
 }
 
 const SearchInput: FC<Props> = ({ className }) => {
-    const [keywords, setKeywords] = useKeywords()
+    const { keywords, setKeywords } = useQuery()
 
     const handleChange = useDebouncedCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
