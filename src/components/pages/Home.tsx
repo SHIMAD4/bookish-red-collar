@@ -1,8 +1,10 @@
 import { useKeywords } from '@/context/useKeywords'
 import { Books } from '@/shared/api'
-import type { BookItem } from '@/shared/types'
+import type { BookItem, ToolName } from '@/shared/types'
 import { useEffect, useState } from 'react'
 import HomeTemplate from '../templates/Home'
+
+const NeededTools: ToolName[] = ['search', 'filter']
 
 const HomePage = () => {
     const [keywords] = useKeywords()
@@ -16,7 +18,7 @@ const HomePage = () => {
             .catch(() => setBooks([]))
     }, [keywords])
 
-    return <HomeTemplate books={books} />
+    return <HomeTemplate books={books} tools={NeededTools} />
 }
 
 export default HomePage

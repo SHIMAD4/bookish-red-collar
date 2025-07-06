@@ -1,4 +1,4 @@
 import { useContext } from 'react'
-import KeywordsContext from './keywords-context'
+import KeywordsContext from './keywordsСontext'
 
 export const useKeywords = () => useContext(KeywordsContext)
