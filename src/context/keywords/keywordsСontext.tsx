@@ -1,16 +1,12 @@
 import { useLocalStorageState } from '@/hooks/useLocalStorage'
-import { createContext } from 'react'
+import { createContext, type ReactNode } from 'react'
 
 const KeywordsContext = createContext<[string, (val: string) => void]>([
     '',
     () => {},
 ])
 
-export const KeywordsProvider = ({
-    children,
-}: {
-    children: React.ReactNode
-}) => {
+export const KeywordsProvider = ({ children }: { children: ReactNode }) => {
     const keywordsState = useLocalStorageState('keywords', 'JavaScript') as [
         string,
         (val: string) => void,

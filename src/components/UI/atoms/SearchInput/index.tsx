@@ -1,4 +1,4 @@
-import { useKeywords } from '@/context/useKeywords'
+import { useKeywords } from '@/context/keywords/useKeywords'
 import { useDebouncedCallback } from '@/hooks/useDebounce'
 import type { ChangeEvent, FC } from 'react'
 import './index.scss'
