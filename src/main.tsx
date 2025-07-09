@@ -5,6 +5,7 @@ import './index.scss'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 
 import ReactDOM from 'react-dom/client'
+import Book from './components/pages/Book'
 
 const router = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
                 <HomePage />
             </QueryProvider>
         ),
+    },
+    {
+        path: '/:bookId',
+        element: <Book />,
     },
 ])
 

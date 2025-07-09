@@ -1,5 +1,6 @@
 import { useLocalStorageState } from '@/hooks/useLocalStorageState'
 import type { FC } from 'react'
+import { Link } from 'react-router'
 import CardCover from '../../atoms/CardCover'
 import RowList from '../../atoms/RowList'
 import './index.scss'
@@ -35,7 +36,7 @@ const Card: FC<CardProps> = ({
     }
 
     return (
-        <div className='card'>
+        <Link to={`${bookId}`} className='card'>
             <CardCover src={coverSrc} />
             <div className='info'>
                 <h2 className='title'>{title}</h2>
@@ -44,7 +45,11 @@ const Card: FC<CardProps> = ({
             </div>
             <button
                 className={`favorite ${isFavorite ? 'active' : ''}`}
-                onClick={toggleFavorite}
+                onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    toggleFavorite()
+                }}
             >
                 <svg
                     width='32'
@@ -56,13 +61,10 @@ const Card: FC<CardProps> = ({
                     strokeLinecap='round'
                     strokeLinejoin='round'
                 >
-                    <polygon
-                        points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 
-                     5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'
-                    />
+                    <polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2' />
                 </svg>
             </button>
-        </div>
+        </Link>
     )
 }
 

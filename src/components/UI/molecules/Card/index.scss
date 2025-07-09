@@ -15,6 +15,9 @@ $card-background-color: #d1d1d1;
 
     position: relative;
 
+    color: black;
+    text-decoration: none;
+
     .info {
         @include flex(column, center, flex-start);
 

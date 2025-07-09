@@ -5,7 +5,12 @@ export type VolumeInfo = {
     description: string
     imageLinks?: {
         smallThumbnail?: string
+        medium?: string
+        small?: string
     }
+    publishedDate: string
+    printedPageCount: number
+    language: string
 }
 
 export type BookItem = {

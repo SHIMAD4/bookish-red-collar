@@ -1,9 +1,9 @@
 .wrapper {
+    width: 100vw;
+
     display: grid;
     grid-template-columns: 15% 1fr;
     gap: 16px;
-
-    margin-right: 24px;
 
     .mainList {
         margin-top: 16px;
