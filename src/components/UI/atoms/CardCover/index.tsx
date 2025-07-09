@@ -3,7 +3,7 @@ import './index.scss'
 
 type CardCoverProps = {
     src?: string
-    forPage: boolean
+    forPage?: boolean
 }
 
 const CardCover: FC<CardCoverProps> = ({ src, forPage = false }) => {

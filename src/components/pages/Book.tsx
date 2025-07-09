@@ -19,6 +19,7 @@ const BookPage: FC = () => {
     return (
         book && (
             <BookTemplate
+                id={book.id}
                 title={book.volumeInfo.title}
                 imageLinks={book.volumeInfo.imageLinks}
                 authors={book.volumeInfo.authors}

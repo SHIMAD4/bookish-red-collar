@@ -1,11 +1,13 @@
 import CardCover from '@/components/UI/atoms/CardCover'
+import FavoriteButton from '@/components/UI/atoms/FavoriteButton'
 import RowList from '@/components/UI/atoms/RowList'
 import type { VolumeInfo } from '@/shared/types'
 import parse from 'html-react-parser'
 import type { FC } from 'react'
 import './index.scss'
 
-const BookTemplate: FC<VolumeInfo> = ({
+const BookTemplate: FC<VolumeInfo & { id: string }> = ({
+    id,
     title,
     imageLinks,
     authors,
@@ -24,6 +26,7 @@ const BookTemplate: FC<VolumeInfo> = ({
                             <h1>{title}</h1>
                             <RowList arr={authors} />
                         </div>
+                        <FavoriteButton bookId={id} />
                         <div className='info_desc'>
                             <p>
                                 Язык: <span>{language.toUpperCase()}</span>

@@ -25,22 +25,4 @@ $card-background-color: #d1d1d1;
             @include cutTextRows;
         }
     }
-
-    .favorite {
-        background: none;
-        border: none;
-        cursor: pointer;
-
-        position: absolute;
-        top: 16px;
-        right: 16px;
-
-        svg {
-            color: gray;
-        }
-
-        &.active svg {
-            color: gold;
-        }
-    }
 }
