@@ -1,44 +1,63 @@
-import { createContext, useMemo, useState, type ReactNode } from 'react'
+import {
+    createContext,
+    useCallback,
+    useRef,
+    useState,
+    type ReactNode,
+} from 'react'
 
-type ScrollState = {
-    scrollTop: number
-    setScrollTop: (val: number) => void
-    scrollHeight: number
-    setScrollHeight: (val: number) => void
-    innerHeight: number
+type InfiniteScrollState = {
+    hasMore: boolean
+    isFetching: boolean
+    loadMore: () => Promise<void>
+    reset: () => void
 }
 
-const defaultValue: ScrollState = {
-    scrollTop: 0,
-    setScrollTop: () => {},
-    scrollHeight: 0,
-    setScrollHeight: () => {},
-    innerHeight: 0,
-}
+const InfiniteScrollContext = createContext<InfiniteScrollState | null>(null)
 
-const ScrollContext = createContext<ScrollState>(defaultValue)
+export const InfiniteScrollProvider = ({
+    children,
+    fetcher,
+}: {
+    children: ReactNode
+    fetcher: (page: number) => Promise<[]>
+}) => {
+    const [page, setPage] = useState(0)
+    const [isFetching, setIsFetching] = useState(false)
+    const [hasMore, setHasMore] = useState(true)
+    const isFirstLoad = useRef(true)
 
-export const ScrollProvider = ({ children }: { children: ReactNode }) => {
-    const [scrollTop, setScrollTop] = useState(0)
-    const [scrollHeight, setScrollHeight] = useState(0)
-    const innerHeight = window.innerHeight
+    const loadMore = useCallback(async () => {
+        if (isFetching || !hasMore) return
 
-    const value = useMemo(
-        () => ({
-            scrollTop,
-            setScrollTop,
-            scrollHeight,
-            setScrollHeight,
-            innerHeight,
-        }),
-        [innerHeight, scrollHeight, scrollTop],
-    )
+        setIsFetching(true)
+
+        try {
+            const data = await fetcher(page)
+
+            if (!data || data.length === 0) {
+                setHasMore(false)
+            } else {
+                setPage((prev) => prev + 1)
+            }
+        } finally {
+            setIsFetching(false)
+            isFirstLoad.current = false
+        }
+    }, [fetcher, page, hasMore, isFetching])
+
+    const reset = useCallback(() => {
+        setPage(0)
+        setHasMore(true)
+    }, [])
 
     return (
-        <ScrollContext.Provider value={value}>
+        <InfiniteScrollContext.Provider
+            value={{ hasMore, isFetching, loadMore, reset }}
+        >
             {children}
-        </ScrollContext.Provider>
+        </InfiniteScrollContext.Provider>
     )
 }
 
-export default ScrollContext
+export default InfiniteScrollContext
