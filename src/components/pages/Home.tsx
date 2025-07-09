@@ -3,13 +3,7 @@ import { InfiniteScrollProvider } from '@/context/scroll/context'
 import { useInfiniteScrollContext } from '@/context/scroll/useInfiniteScrollContext'
 import { Books } from '@/shared/api'
 import type { BookItem, ToolName } from '@/shared/types'
-import {
-    useEffect,
-    useRef,
-    useState,
-    type Dispatch,
-    type SetStateAction,
-} from 'react'
+import { useEffect, useRef, useState, type FC } from 'react'
 import HomeTemplate from '../templates/Home'
 
 const NeededTools: ToolName[] = ['search', 'filter']
@@ -45,15 +39,15 @@ type HomePageInnerProps = {
     keywords: string
     filter: string
     books: BookItem[]
-    setBooks: Dispatch<SetStateAction<BookItem[]>>
+    setBooks: (arr: []) => void
 }
 
-const HomePageInner = ({
+const HomePageInner: FC<HomePageInnerProps> = ({
     keywords,
     filter,
     books,
     setBooks,
-}: HomePageInnerProps) => {
+}) => {
     const isFirstLoad = useRef(true)
     const { reset } = useInfiniteScrollContext()
 
