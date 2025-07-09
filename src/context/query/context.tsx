@@ -1,4 +1,4 @@
-import { useLocalStorageState } from '@/hooks/useLocalStorage'
+import { useLocalStorageState } from '@/hooks/useLocalStorageState'
 import { createContext, useMemo, type ReactNode } from 'react'
 
 type QueryState = {
