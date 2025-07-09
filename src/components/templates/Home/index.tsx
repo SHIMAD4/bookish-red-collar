@@ -4,12 +4,12 @@ import type { FC } from 'react'
 import List from '../../UI/organisms/List'
 import './index.scss'
 
-type HomeTemplate = {
+type HomeTemplateProps = {
     books: BookItem[]
     tools: ToolName[]
 }
 
-const HomeTemplate: FC<HomeTemplate> = ({ books, tools }) => {
+const HomeTemplate: FC<HomeTemplateProps> = ({ books, tools }) => {
     return (
         <div className='wrapper'>
             <Sidebar tools={tools} />
