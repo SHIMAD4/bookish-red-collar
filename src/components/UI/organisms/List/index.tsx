@@ -35,6 +35,7 @@ const List: FC<ListProps> = ({ className, items }) => {
                         title={item.volumeInfo.title}
                         authors={item.volumeInfo.authors}
                         description={item.volumeInfo.description}
+                        bookId={item.id}
                     />
                 </li>
             ))}
