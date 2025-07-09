@@ -11,28 +11,20 @@ const HomePage = () => {
     const { keywords, filter } = useQuery()
     const { scrollTop, scrollHeight, innerHeight } = useScrollContext()
 
-    const [startIndex, setStartIndex] = useState(0)
+    const [startIndex, setStartIndex] = useState<number>(0)
     const [books, setBooks] = useState<BookItem[]>([])
-    const [hasMore, setHasMore] = useState(true)
+    const [hasMore, setHasMore] = useState<boolean>(true)
 
     const timeoutRef = useRef<NodeJS.Timeout | null>(null)
     const hasRequestedRef = useRef(false)
+    const isFirstLoad = useRef(true)
 
     useEffect(() => {
-        const nearBottom = scrollHeight - (scrollTop + innerHeight) < 4000
-
-        if (nearBottom && !hasRequestedRef.current && hasMore) {
-            hasRequestedRef.current = true
-
-            if (timeoutRef.current) {
-                clearTimeout(timeoutRef.current)
-            }
-
-            timeoutRef.current = setTimeout(() => {
-                setStartIndex((prev) => prev + 20)
-            }, 300)
-        }
-    }, [scrollHeight, scrollTop, innerHeight, hasMore])
+        setBooks([])
+        setStartIndex(0)
+        setHasMore(true)
+        isFirstLoad.current = true
+    }, [keywords, filter])
 
     useEffect(() => {
         if (!hasMore) return
@@ -46,11 +38,30 @@ const HomePage = () => {
                     setBooks((prev) => [...prev, ...data])
                 }
                 hasRequestedRef.current = false
+                isFirstLoad.current = false
             })
             .catch(() => {
                 hasRequestedRef.current = false
+                isFirstLoad.current = false
             })
     }, [keywords, filter, startIndex, hasMore])
+
+    useEffect(() => {
+        if (isFirstLoad.current || !hasMore) return
+
+        const nearBottom = scrollHeight - (scrollTop + innerHeight) < 4000
+        if (nearBottom && !hasRequestedRef.current) {
+            hasRequestedRef.current = true
+
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current)
+            }
+
+            timeoutRef.current = setTimeout(() => {
+                setStartIndex((prev) => prev + 20)
+            }, 300)
+        }
+    }, [scrollHeight, scrollTop, innerHeight, hasMore])
 
     return <HomeTemplate books={books} tools={NeededTools} />
 }

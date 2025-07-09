@@ -14,7 +14,7 @@ const SearchInput: FC<Props> = ({ className }) => {
         (e: ChangeEvent<HTMLInputElement>) => {
             setKeywords(e.target.value)
         },
-        300,
+        400,
     )
 
     return (
