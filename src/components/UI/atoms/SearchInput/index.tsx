@@ -1,5 +1,5 @@
 import { useQuery } from '@/context/query/useQuery'
-import { useDebouncedCallback } from '@/hooks/useDebounce'
+import { useDebouncedCallback } from '@/hooks/useDebouncedCallback'
 import type { ChangeEvent, FC } from 'react'
 import './index.scss'
 

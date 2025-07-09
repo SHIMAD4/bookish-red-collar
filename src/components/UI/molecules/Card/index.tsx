@@ -1,4 +1,4 @@
-import { useLocalStorageState } from '@/hooks/useLocalStorage'
+import { useLocalStorageState } from '@/hooks/useLocalStorageState'
 import type { FC } from 'react'
 import CardCover from '../../atoms/CardCover'
 import RowList from '../../atoms/RowList'
