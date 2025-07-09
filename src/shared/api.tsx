@@ -21,6 +21,7 @@ const Books = {
             `?q=${keywords}&startIndex=${startIndex}&maxResults=${maxResults}`,
         )
     },
+    getBookById: (bookId: string) => ApiInstance.get(`/${bookId}`),
 }
 
 export { Books }

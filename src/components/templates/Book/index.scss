@@ -1,0 +1,62 @@
+@use '@/assets/scss/mixins' as *;
+
+.book {
+    @include flex(column, center, center);
+
+    max-width: 900px;
+    height: 100vh;
+
+    padding: 24px;
+
+    &_inner {
+        @include flex(row, center, flex-start);
+
+        width: 100%;
+    }
+
+    &_info {
+        @include flex(column, space-between, flex-start);
+
+        height: 100%;
+
+        padding: 16px;
+        background-color: #bdbdbd;
+        border-radius: 16px;
+
+        p {
+            font-size: 20px;
+        }
+
+        p > span {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .info_main {
+            @include flex(column, center, flex-start);
+        }
+
+        .info_desc {
+            @include flex(column, center, flex-start);
+        }
+    }
+
+    .description {
+        padding: 32px;
+        background-color: #bdbdbd;
+        border-radius: 16px;
+
+        font-size: 20px;
+
+        @include hiddenScroll;
+
+        p {
+            margin-bottom: 8px;
+        }
+
+        ul {
+            margin: 24px;
+            margin-left: 48px;
+        }
+    }
+}

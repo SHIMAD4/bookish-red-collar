@@ -13,3 +13,33 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+@mixin hiddenScroll() {
+    overflow-y: scroll;
+
+    scrollbar-width: thin; // для Firefox
+    scrollbar-color: transparent transparent; // изначально прозрачный
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(100, 100, 100, 0.4);
+        border-radius: 3px;
+        transition: background-color 0.3s ease;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(100, 100, 100, 0.7);
+    }
+
+    &::-webkit-scrollbar-button,
+    &::-webkit-scrollbar-corner {
+        display: none;
+    }
+}

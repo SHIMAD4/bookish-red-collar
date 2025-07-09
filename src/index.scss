@@ -1,3 +1,5 @@
+@use '@/assets/scss/mixins' as *;
+
 * {
     margin: 0;
     padding: 0;
@@ -5,5 +7,7 @@
 }
 
 body {
+    @include flex(column, center, center, 0);
+
     overflow-y: hidden;
 }
