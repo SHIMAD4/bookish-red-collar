@@ -6,7 +6,7 @@ import './index.scss'
 
 type HomeTemplateProps = {
     books: BookItem[]
-    tools: ToolName[]
+    tools?: ToolName[]
 }
 
 const HomeTemplate: FC<HomeTemplateProps> = ({ books, tools }) => {

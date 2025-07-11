@@ -1,4 +1,5 @@
 import js from '@eslint/js'
+import erasableSyntaxOnly from 'eslint-plugin-erasable-syntax-only'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import { globalIgnores } from 'eslint/config'
@@ -14,6 +15,13 @@ export default tseslint.config([
             tseslint.configs.recommended,
             reactHooks.configs['recommended-latest'],
             reactRefresh.configs.vite,
+            erasableSyntaxOnly.configs.recommended,
+            {
+                files: ['src/some/files/*.ts'],
+                rules: {
+                    'erasable-syntax-only/enums': 'off',
+                },
+            },
         ],
         languageOptions: {
             ecmaVersion: 2020,

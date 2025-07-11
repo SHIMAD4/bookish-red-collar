@@ -20,3 +20,8 @@ export type BookItem = {
 
 // ====== Tool info ======
 export type ToolName = 'search' | 'filter'
+
+export enum Pathnames {
+    Main = '/',
+    Favorite = '/favorite',
+}
