@@ -1,4 +1,5 @@
 import { useCurrentPathMeta } from '@/hooks/useCurrentPathMeta'
+import { useTitleByPath } from '@/hooks/useTitleByPath'
 import { Pathnames, type ToolName } from '@/shared/types'
 import { useNavigate } from 'react-router'
 import Tools from '../../molecules/Tools'
@@ -9,11 +10,21 @@ type SidebarProps = {
 }
 
 const Sidebar = ({ tools }: SidebarProps) => {
+    // TODO: Пути и тайтлы нужно будет сделать расширяемыми
     const navigate = useNavigate()
-    const { path, title } = useCurrentPathMeta()
+    const { path } = useCurrentPathMeta()
+    const title = useTitleByPath(
+        path === Pathnames.Main ? Pathnames.Favorite : Pathnames.Main,
+    )
 
     const handleClick = () => {
-        navigate(path === Pathnames.Main ? Pathnames.Favorite : Pathnames.Main)
+        switch (path) {
+            case Pathnames.Main:
+                navigate(Pathnames.Favorite)
+                break
+            case Pathnames.Favorite:
+                navigate(Pathnames.Main)
+        }
     }
 
     return (

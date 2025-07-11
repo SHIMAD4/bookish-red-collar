@@ -15,12 +15,12 @@ type InfiniteScrollState = {
 
 const InfiniteScrollContext = createContext<InfiniteScrollState | null>(null)
 
-export const InfiniteScrollProvider = ({
+export const InfiniteScrollProvider = <T,>({
     children,
     fetcher,
 }: {
     children: ReactNode
-    fetcher: (page: number) => Promise<[]>
+    fetcher: (page: number) => Promise<T[]>
 }) => {
     const [page, setPage] = useState(0)
     const [isFetching, setIsFetching] = useState(false)
