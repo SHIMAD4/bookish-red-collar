@@ -21,7 +21,7 @@ const Card: FC<CardProps> = ({
     bookId,
 }) => {
     return (
-        <Link to={`${bookId}`} className='card'>
+        <Link to={`/${bookId}`} className='card'>
             <CardCover src={coverSrc} />
             <div className='info'>
                 <h2 className='title'>{title}</h2>
