@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 
 import ReactDOM from 'react-dom/client'
 import Book from './components/pages/Book'
+import FavoritePage from './components/pages/Favorite'
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     {
         path: '/:bookId',
         element: <Book />,
+    },
+    {
+        path: '/favorite',
+        element: <FavoritePage />,
     },
 ])
 

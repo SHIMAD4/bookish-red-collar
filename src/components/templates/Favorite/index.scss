@@ -1,0 +1,12 @@
+.wrapper {
+    width: 100vw;
+
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    gap: 16px;
+
+    .favoriteList {
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+}

@@ -4,18 +4,18 @@ import type { FC } from 'react'
 import List from '../../UI/organisms/List'
 import './index.scss'
 
-type HomeTemplateProps = {
+type FavoriteTemplateProps = {
     books: BookItem[]
     tools?: ToolName[]
 }
 
-const HomeTemplate: FC<HomeTemplateProps> = ({ books, tools }) => {
+const FavoriteTemplate: FC<FavoriteTemplateProps> = ({ books, tools }) => {
     return (
         <div className='wrapper'>
             <Sidebar tools={tools} />
-            <List className='mainList' items={books} />
+            <List className='favoriteList' items={books} />
         </div>
     )
 }
 
-export default HomeTemplate
+export default FavoriteTemplate
